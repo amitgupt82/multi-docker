@@ -21,3 +21,15 @@ after_success:
   - docker push amitgupt82/multi-nginx
   - docker push amitgupt82/multi-server
   - docker push amitgupt82/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-container
+  env: MultiContainer-env
+  bucket_name: elasticbeanstalk-us-east-2-615800104029
+  bucket_path: multi_container
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESSKEY
+  secret_access_key: $AWS_SECRETKEY  
